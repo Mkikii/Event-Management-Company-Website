@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventer</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header></header>
+    <section id="welcomeSection">
+        <div id="title">
+            <h1>Eventer Co.</h1>
+            <p>Your no.1 Event Management Company </p>
+        </div>
+        <div id="aboutUs">
+                <h2>About us</h2>
+                <p>Eventer is an Event Management company that offers great and outstanding services in terms of managing your dream event. Whether birthdays or weddings, you name it. We believe that we can satisfy your expectations for your event and make it memorable.</p>
+                <p>One of our strongest merits is that the event management process is quite simplified. Your only job is to give us the details we need. You can leave the rest to us.</p>
+        </div>
+    </section>
+
+        <p id="getStarted">Let us get started planning your event.</p>
+
+
+    <div id="clientDetailsFormDiv">        
+        <h2>Enter Client Details</h2>
+
+        <form id="clientDetailsForm"></form>
+            <p>Client Name</p>
+            <input type="text" name="clientName" id="clientName" placeholder="Type in name(Individual, company, etc.)" >
+
+            <p>Location</p>
+            <input type="text" name="location" id="location" placeholder="Enter where you are based. (Feel free to input the address)"> <br>
+
+            <p>Contacts</p>
+            <input type="text" name="contact" id="contact" placeholder="Enter phone number or Email account"> <br>
+        </form>
+
+        <button type="submit">Submit Details</button>
+    </div>
+
+    <div id="eventDetailsFormDiv">
+        <h2>Enter Event Details</h2>
+        <form id="eventDetailsForm">
+
+            <div class="eventDetails">
+                <p>Event Name</p>
+                <input type="text" name="eventName" id="eventName" placeholder="Type in the name of your event . Example: Busaka graduation ceremony">
+            </div>
+
+            <div class="eventDetails">
+                <p>Event location</p>
+                <input type="text" name="eventLocation" id="eventLocation"> <br>
+            </div>            
+
+            <div class="eventDetails">
+                <p>Event type</p>
+                <input type="text" name="eventType" id="eventType"> <br>
+            </div>
+
+            <div class="eventDetails">
+                <p>Date</p>
+                <input type="date" name="date" id="date"> <br>
+            </div>
+
+            <div class="eventDetails">
+                <p>Time</p>
+                From <input type="time" name="startTime" id="startTime"> to <input type="time" name="endTime" id="endTime">
+            </div>
+
+            <div class="eventDetails">
+                <p>Picture URL(Optional)</p>
+                <input type="url" name="picture" id="pic"> <br>
+            </div>
+
+            <div class="eventDetails">
+                <p>Event description</p>
+                <textarea type="text" name="description" id="description"> </textarea> <br>
+            </div>
+
+        </form>
+        <button type="submit">Submit Details</button>
+    </div>
+
+    <div id="pricingForm">
+        <h2>Costs</h2>
+        <form id="costs">
+            <div class="pricing">
+                <h3>Food & Drinks</h3>
+            </div>
+            <div class="pricing">
+                <h3>Decorations</h3>
+            </div>
+            <div class="pricing">
+                <h3>Photo & Video Packages</h3>
+            </div>
+            <div class="pricing">
+                <h3>Music</h3>
+            </div>
+            <div class="pricing"></div>
+        </form>
+    </div>
+
+    <footer></footer>
+</body>
+<script src="./src/index.js"></script>
+</html>
