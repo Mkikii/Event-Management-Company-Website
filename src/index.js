@@ -57,7 +57,6 @@ function handleFormSubmit(e) {
 function titleList(client) {
     const list = document.createElement("li");
     list.textContent = client.name;
-
     list.style.padding = "20px 0";
     list.style.borderRadius = "5px";
     list.style.cursor = "pointer";
@@ -72,7 +71,32 @@ function titleList(client) {
         li.addEventListener("mouseleave", () => {
         li.style.backgroundColor = ""
         });
-});
+    });
+
+    const deleteBtn = document.createElement("button")
+    deleteBtn.textContent = "Delete Client"
+    deleteBtn.addEventListener("click",(event) => {
+        event.stopPropagation()
+        if(confirm("Are you sure you want to delete this data?")){
+            fetch(`http://localhost:3000/clients/${clientId}`, {
+                method: "DELETE"
+            })
+            .then(() => {
+                alert("Client data has been deleted.")
+                const eventDisplay = document.getElementById("eventDisplay")
+                eventDisplay.innerHTML = ""
+                list.remove()
+                
+            })
+            .catch( error => {
+                alert("Failed to delete data")
+                console.log(error)
+            })
+        }
+    })
+
+
+    list.appendChild(deleteBtn)
 
     const clientList = document.getElementById("list");
     clientList.appendChild(list);
@@ -182,25 +206,8 @@ function loadInitialData() {
 }
 
 
-const deleteBtn = document.createElement("button")
-    deleteBtn.addEventListener("click",() => {
-        if(confirm("Are you sure you want to delete this data?")){
-            fetch(`http://localhost:3000/clients/${clients.id}`, {
-                method: "DELETE"
-            })
-            .then(() => {
-                alert("Data deleted.")
-                const eventDisplay = document.getElementById("eventDisplay")
-                eventDisplay.innerHTML = ""
-                
-                
-            })
-            .catch( error => {
-                alert("Failed to delete data")
-                console.log(error)
-            })
-        }
-    })
+
+
 
 
 
