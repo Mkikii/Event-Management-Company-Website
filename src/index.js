@@ -85,6 +85,29 @@ function titleList(client) {
                 events.forEach(event => eventDisplayer(event));
             });
     });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete Client";
+    deleteBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
+        if (confirm("Are you sure you want to delete this client and their events?")) {
+            fetch(`http://localhost:3000/clients/${client.id}`, {
+                method: "DELETE"
+            })
+            .then(() => {
+                alert("Client deleted.");
+                document.getElementById("eventDisplay").innerHTML = "";
+                list.remove()
+
+            })
+            .catch(error => {
+                alert("Failed to delete client.");
+                console.error(error);
+            });
+        }
+    });
+
+    list.appendChild(deleteBtn)
 }
 
 function eventDisplayer(event) {
@@ -124,6 +147,14 @@ function eventDisplayer(event) {
 
     editBtn.addEventListener("click", () => {
         showEditForm(event, eventDisplay);
+    });
+
+    editBtn.addEventListener("mouseenter", () => {
+        editBtn.style.backgroundColor = "rgba(240, 248, 255, 0.522)"
+    });
+
+    editBtn.addEventListener("mouseleave", () => {
+        editBtn.style.backgroundColor = ""
     });
 
     container.append(title, location, type, date, time, description, image, editBtn);
@@ -175,6 +206,14 @@ function showEditForm(event, eventDisplay) {
             description: description.value,
             pictureURL: image.value
         };
+    
+    saveBtn.addEventListener("mouseenter", () => {
+        saveBtn.style.backgroundColor = "rgba(240, 248, 255, 0.522)"
+    });
+
+    saveBtn.addEventListener("mouseleave", () => {
+        saveBtn.style.backgroundColor = ""
+    });
 
         fetch(`http://localhost:3000/events/${event.id}`, {
             method: "PATCH",
@@ -197,6 +236,7 @@ function showEditForm(event, eventDisplay) {
 
     container.append(title, location, type, date, startTime, endTime, description, image, saveBtn);
     eventDisplay.appendChild(container);
+
 }
 
 function loadInitialData() {
