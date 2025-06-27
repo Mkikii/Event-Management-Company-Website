@@ -10,134 +10,68 @@
     <header>
         <div id="headerTitle">
             <h1>Eventer Co.</h1>
-            <p>Your no.1 Event Management Company </p>
+            <p>Your no.1 Event Management Company</p>
             <p id="welcomer">Welcome to The Eventer Company Website.</p>
         </div>
     </header>
+
     <section id="displaySection">
         <div id="leftSide">
-            <div id ="clientList" >
+            <div id="clientList">
                 <ul id="list"></ul>
             </div>
 
-                <div id="clientDetailsFormDiv" >        
-            <h2>Enter Client Details</h2>
+            <div id="clientDetailsFormDiv">
+                <h2>Enter Client & Event Details</h2>
+                <form id="clientEventForm">
+                    <div id="clientSection">
+                        <h3>Client Details</h3>
+                        <p>Client Name</p>
+                        <input type="text" name="clientName" required>
 
-            <form id="clientDetailsForm"></form>
-                <p>Client Name</p>
-                <input type="text" name="clientName" id="clientName" placeholder="Type in name(Individual, company, etc.)" >
+                        <p>Location</p>
+                        <input type="text" name="clientLocation" required>
 
-                <p type="Location">Location</p>
-                <input type="text" name="clientLocation" id="clientLocation" placeholder="Enter where you are based. (Feel free to input the address)"> <br>
+                        <p>Contacts</p>
+                        <input type="text" name="clientContact" required>
+                    </div>
 
-                <p>Contacts</p>
-                <input type="text" name="clientContact" id="clientContact" placeholder="Enter phone number or Email account"> <br>
+                    <div id="eventSection">
+                        <h3>Event Details</h3>
+                        <p>Event Name</p>
+                        <input type="text" name="eventName" required>
 
-                        <button type="submit">Submit Details</button>
-            </form>
+                        <p>Event Location</p>
+                        <input type="text" name="eventLocation" required>
+
+                        <p>Event Type</p>
+                        <select name="eventType" required>
+                            <option value="Social Event">Social Event</option>
+                            <option value="Corporate Event">Corporate Event</option>
+                        </select>
+
+                        <p>Date</p>
+                        <input type="date" name="date" required>
+
+                        <p>Time</p>
+                        From: <br> <input type="time" name="startTime" required> <br>
+                        to: <br> <input type="time" name="endTime" required>
+
+                        <p>Picture URL (Optional)</p>
+                        <input type="url" name="picture">
+
+                        <p>Event Description</p>
+                        <textarea name="description" required></textarea>
+
+                        <button type="submit">Submit All Details</button>
+                    </div>
+                    </form>
+            </div>
         </div>
-    </div>
 
-        <div id ="eventDisplay"></div>
+        <div id="eventDisplay"></div>
     </section>
 
-
-
-    <div id="eventDetailsFormDiv">
-        <h2>Enter Event Details</h2>
-        <form id="eventDetailsForm">
-
-            <div class="eventDetails">
-                <p>Event Name</p>
-                <input type="text" name="eventName" id="eventName" placeholder="Type in the name of your event . Example: Busaka graduation ceremony">
-            </div>
-
-            <div class="eventDetails">
-                <p>Event location</p>
-                <input type="text" name="eventLocation" id="eventLocation"> <br>
-            </div>            
-
-            <div class="eventDetails">
-                <p>Event type</p>
-                <select name="eventType" id="eventType">
-                    <option value="Social Event">Social Event</option>
-                    <option value="Corporate Event">Corporate Event</option>
-                </select> <br>
-
-            </div>
-
-            <div class="eventDetails">
-                <p>Date</p>
-                <input type="date" name="date" id="date"> <br>
-            </div>
-
-            <div class="eventDetails">
-                <p>Time</p>
-                From <input type="time" name="startTime" id="startTime"> to <input type="time" name="endTime" id="endTime">
-            </div>
-
-            <div class="eventDetails">
-                <p>Picture URL(Optional)</p>
-                <input type="url" name="picture" id="pictureURL"> <br>
-            </div>
-
-            <div class="eventDetails">
-                <p>Event description</p>
-                <textarea type="text" name="description" id="description"> </textarea> <br>
-            </div>
-
-        </form>
-        <button type="submit">Submit Details</button>
-    </div>
-
-    <div id="costs">
-        <h2>Costs</h2>
-        <form id="pricingForm">
-            <div class="pricing">
-                <h3>Food & Drinks</h3>
-                <label for="foodType">Choose the meal type best for your event's size:</label> <br>
-                <p>Refer to the company's <a href="#Eventer menu"> food and drinks</a> packages to see what is included in each buffet sizing.</p>
-                <select name="meals" id="meals">
-                    <option value="">Choose your Buffet size:</option>
-                    <option value="Nuclear family sized buffet">Nuclear family sized buffet</option>
-                    <option value="Small King's Table">Small King's Table</option>
-                    <option value="Extended family size buffet">Extended family size buffet</option>
-                    <option value="Medium King's Table">Medium King's Table</option>
-                    <option value="King's Banquet">King's Banquet</option>
-                    <option value="Food Festival">Food Festival</option>
-                </select>
-            </div>
-            <div class="pricing">
-                <h3>Decorations</h3>
-                    <label for="decorations">Choose the decoration quantity best for your event's size:</label> <br>
-                    <select name="meals" id="meals">
-                        <option value="">Choose your decoration quantity:</option>
-                        <option value="Room">Room</option>
-                        <option value="Small Hall">Small Hall</option>
-                        <option value="Large Hall">Large Hall</option>
-                        <option value="Field">Field</option>
-                        <option value="Staduim">Stadium</option>
-                    </select>
-            </div>
-            <div class="pricing">
-                <h3>Photo & Video Packages</h3>
-                <label for="Photo & Video Packages">Choose the number of photographers / videographers best for your event's size:</label> <br>
-                    <select name="meals" id="meals">
-                        <option value="">Choose number of desired photographers:</option>
-                        <option value="1">1</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                    </select>
-            </div>
-            <div class="pricing">
-                <h3>Music and Entertainment.</h3>
-            </div>
-            <div class="pricing"></div>
-        </form>
-    </div>
-
-
+    <script src="./src/index.js"></script>
 </body>
-<script src="./src/index.js"></script>
 </html>

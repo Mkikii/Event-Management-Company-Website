@@ -5,9 +5,20 @@
       "name": "Mary Mouser",
       "location": "Rail Rd, Camden District",
       "contact": "marimousey@outlook.com"
+    },
+    {
+      "name": "Promise Advocacy Company",
+      "location": "Lincoln District",
+      "contacts": "0725690345",
+      "id": 2
+    },
+    {
+      "name": "James Ken",
+      "location": "London",
+      "contacts": "Iamhimnyefff@gmail.com",
+      "id": 3
     }
   ],
-
   "events": [
     {
       "id": 1,
@@ -20,9 +31,31 @@
       "startTime": "08:30 AM",
       "endTime": "04:00 PM",
       "pictureURL": "https://images.unsplash.com/photo-1619030785588-b668e578309e?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "clientId": 2,
+      "eventName": "Manager's workshop",
+      "eventLocation": "Carlton hotel",
+      "type": "Corporate Event",
+      "description": "Fun",
+      "date": "2025-07-29",
+      "startTime": "07:00",
+      "endTime": "19:00",
+      "pictureURL": "https://unsplash.com/photos/motorcycle-passes-a-red-traffic-light-at-night-LxI0fL3DVk4",
+      "id": 2
+    },
+    {
+      "clientId": 3,
+      "eventName": "Inter-Branch Meeting",
+      "eventLocation": "Kenton Hotel",
+      "type": "Corporate Event",
+      "description": "An inter-branch meeting for the Kinderbiz Company",
+      "date": "2025-09-23",
+      "startTime": "10:00",
+      "endTime": "18:00",
+      "pictureURL": "https://unsplash.com/photos/apple-macbook-beside-computer-mouse-on-table-9l_326FISzk",
+      "id": 3
     }
   ],
-  "costs":[
-
-  ]
+  "costs": []
 }
