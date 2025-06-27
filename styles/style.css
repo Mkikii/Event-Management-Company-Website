@@ -29,8 +29,9 @@ header{
 }
 
 #eventDisplay{
+    margin-top: 40px;
     margin-left: 250px;
-    background-color: rgb(89, 98, 95);
+    background-color: rgba(240, 248, 255, 0.119);
     width: 1000px;
     padding: 16px;
     font-size: 25px;
@@ -39,9 +40,18 @@ header{
 }
 
 #clientList{
-    width:30%;
+    width:80%;
     margin-left: 20px;
     margin-top: 40px;
+    align-self: center;
+    
+}
+
+#leftSide{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-left: 60px;
 }
 
 #title{
@@ -69,14 +79,14 @@ header{
 }
 
 h2{
-    font-size: 60px;
+    font-size: 55px;
     text-align: center;
 }
 
 #clientDetailsFormDiv{
     font-size: 30px;
-    background-color: teal;
-    margin-top: 50px;
+    background-color: rgba(240, 248, 255, 0.119);
+    margin-top: 100px;
     padding-left: 20px;
     border-radius: 16px;
 }
@@ -89,6 +99,7 @@ h2{
 
 #eventDetailsFormDiv{
     background-color: rgb(72, 108, 108);
+    margin-top: 100px;
 }
 
 #eventDetailsForm {
@@ -98,8 +109,6 @@ h2{
     gap: 30px;
     padding: 20px;
     font-size: 30px;
-    max-height: 1100px;
-    min-height: 900px;
 }
 
 .eventDetails {
@@ -142,19 +151,21 @@ button{
     margin: 40px auto;
 }
 
-#pricingForm{
+#costs{
     background-color: rgba(42, 70, 61, 0.511);
     font-size: 25px;
 }
 
-#costs{
+#pricingForm{
+    background-color: rgba(240, 248, 255, 0.119);
     text-align: center;
     display: grid;
     grid-template-columns: repeat (1 ,1fr);
     gap: 60px;
+
 }
 
-#costs select{
+#pricingForm select{
     margin-top: 16px;
     height: 50px;
     width: auto;

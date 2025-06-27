@@ -15,29 +15,32 @@
         </div>
     </header>
     <section id="displaySection">
-        <div id ="clientList" >
-            <ul id="list"></ul>
+        <div id="leftSide">
+            <div id ="clientList" >
+                <ul id="list"></ul>
+            </div>
+
+                <div id="clientDetailsFormDiv" >        
+            <h2>Enter Client Details</h2>
+
+            <form id="clientDetailsForm"></form>
+                <p>Client Name</p>
+                <input type="text" name="clientName" id="clientName" placeholder="Type in name(Individual, company, etc.)" >
+
+                <p type="Location">Location</p>
+                <input type="text" name="clientLocation" id="clientLocation" placeholder="Enter where you are based. (Feel free to input the address)"> <br>
+
+                <p>Contacts</p>
+                <input type="text" name="clientContact" id="clientContact" placeholder="Enter phone number or Email account"> <br>
+
+                        <button type="submit">Submit Details</button>
+            </form>
         </div>
-
-            <div id="clientDetailsFormDiv">        
-        <h2>Enter Client Details</h2>
-
-        <form id="clientDetailsForm"></form>
-            <p>Client Name</p>
-            <input type="text" name="clientName" id="clientName" placeholder="Type in name(Individual, company, etc.)" >
-
-            <p>Location</p>
-            <input type="text" name="clientLocation" id="clientLocation" placeholder="Enter where you are based. (Feel free to input the address)"> <br>
-
-            <p>Contacts</p>
-            <input type="text" name="clientContact" id="clientContact" placeholder="Enter phone number or Email account"> <br>
-
-                    <button type="submit">Submit Details</button>
-        </form>
     </div>
 
         <div id ="eventDisplay"></div>
     </section>
+
 
 
     <div id="eventDetailsFormDiv">
@@ -87,9 +90,9 @@
         <button type="submit">Submit Details</button>
     </div>
 
-    <div id="pricingForm">
+    <div id="costs">
         <h2>Costs</h2>
-        <form id="costs">
+        <form id="pricingForm">
             <div class="pricing">
                 <h3>Food & Drinks</h3>
                 <label for="foodType">Choose the meal type best for your event's size:</label> <br>

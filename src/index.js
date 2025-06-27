@@ -48,15 +48,15 @@ function main(){
     function eventDisplayer(events){
 
         const title = document.createElement("h3")
+        title.textContent = events.eventName
         title.style.fontSize = "40px"
-        title.style.color = "grey"
         title.style.marginTop  = "16px"
+        title.style.marginBottom = "16px"
+
 
         const image = document.createElement("img")
         image.src = events.pictureURL;
         image.alt = events.description;
-        image.style.width = "95%"
-        image.style.height = "600px"
         image.style.alignSelf = "center"
 
         const description = document.createElement("p")
@@ -71,7 +71,7 @@ function main(){
         type.textContent = events.type
 
         const date = document.createElement("p")
-        date.textContent = events.date
+        date.textContent = `On: ${events.date}`
 
         const time = document.createElement("p")
         time.textContent = `From: ${events.startTime} to ${events.endTime}`
