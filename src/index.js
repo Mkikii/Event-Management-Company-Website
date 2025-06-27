@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     loadInitialData();
 });
 
-function handleFormSubmit(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
 
     const clientData = {
         name: formData.get("clientName"),
