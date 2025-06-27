@@ -57,46 +57,21 @@ function handleFormSubmit(e) {
 function titleList(client) {
     const list = document.createElement("li");
     list.textContent = client.name;
+
     list.style.padding = "20px 0";
     list.style.borderRadius = "5px";
     list.style.cursor = "pointer";
     list.style.width = "100%";
     list.style.color = "bisque";
     list.style.listStyleType ="none"
-    document.querySelectorAll("li").forEach(li => {
-        li.addEventListener("mouseenter", () => {
-        li.style.backgroundColor = "rgba(240, 248, 255, 0.522)"
-        });
 
-        li.addEventListener("mouseleave", () => {
-        li.style.backgroundColor = ""
-        });
+    list.addEventListener("mouseenter", () => {
+        list.style.backgroundColor = "rgba(240, 248, 255, 0.522)"
     });
 
-    const deleteBtn = document.createElement("button")
-    deleteBtn.textContent = "Delete Client"
-    deleteBtn.addEventListener("click",(event) => {
-        event.stopPropagation()
-        if(confirm("Are you sure you want to delete this data?")){
-            fetch(`http://localhost:3000/clients/${clientId}`, {
-                method: "DELETE"
-            })
-            .then(() => {
-                alert("Client data has been deleted.")
-                const eventDisplay = document.getElementById("eventDisplay")
-                eventDisplay.innerHTML = ""
-                list.remove()
-                
-            })
-            .catch( error => {
-                alert("Failed to delete data")
-                console.log(error)
-            })
-        }
-    })
-
-
-    list.appendChild(deleteBtn)
+    list.addEventListener("mouseleave", () => {
+        list.style.backgroundColor = ""
+    });
 
     const clientList = document.getElementById("list");
     clientList.appendChild(list);
@@ -114,6 +89,48 @@ function titleList(client) {
 
 function eventDisplayer(event) {
     const eventDisplay = document.getElementById("eventDisplay");
+    eventDisplay.innerHTML = "";
+
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.flexDirection = "column";
+    container.style.gap = "10px";
+
+    const title = document.createElement("h3");
+    title.textContent = event.eventName;
+
+    const location = document.createElement("p");
+    location.textContent = `Location: ${event.eventLocation}`;
+
+    const type = document.createElement("p");
+    type.textContent = `Type: ${event.type}`;
+
+    const date = document.createElement("p");
+    date.textContent = `Date: ${event.date}`;
+
+    const time = document.createElement("p");
+    time.textContent = `Time: ${event.startTime} - ${event.endTime}`;
+
+    const description = document.createElement("p");
+    description.textContent = `Description: ${event.description}`;
+
+    const image = document.createElement("img");
+    image.src = event.pictureURL;
+    image.alt = "Event Image";
+    image.style.maxWidth = "100%";
+
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "✏️ Edit Event";
+
+    editBtn.addEventListener("click", () => {
+        showEditForm(event, eventDisplay);
+    });
+
+    container.append(title, location, type, date, time, description, image, editBtn);
+    eventDisplay.appendChild(container);
+}
+
+function showEditForm(event, eventDisplay) {
     eventDisplay.innerHTML = "";
 
     const title = document.createElement("input");
@@ -137,16 +154,16 @@ function eventDisplayer(event) {
     endTime.type = "time";
     endTime.value = event.endTime;
 
-    const description = document.createElement("input");
+    const description = document.createElement("textarea");
     description.value = event.description;
 
     const image = document.createElement("input");
     image.type = "url";
     image.value = event.pictureURL;
 
-
     const saveBtn = document.createElement("button");
-    saveBtn.textContent = "Save Changes";
+    saveBtn.textContent = "💾 Save Changes";
+
     saveBtn.addEventListener("click", () => {
         const updatedEvent = {
             eventName: title.value,
@@ -169,22 +186,17 @@ function eventDisplayer(event) {
         .then(res => res.json())
         .then(updated => {
             alert("Event updated!");
-            eventDisplayer(updated); 
+            eventDisplayer(updated);
         });
     });
 
-    const furtherDetails = document.createElement("div")
-    furtherDetails.appendChild(location);
-    furtherDetails.appendChild(type);
-    furtherDetails.appendChild(date);
-    furtherDetails.appendChild(startTime);
-    furtherDetails.appendChild(endTime)
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.flexDirection = "column";
+    container.style.gap = "10px";
 
-    eventDisplay.appendChild(title);
-    eventDisplay.appendChild(image);
-    eventDisplay.appendChild(description);
-    eventDisplay.appendChild(furtherDetails);
-    eventDisplay.appendChild(saveBtn)
+    container.append(title, location, type, date, startTime, endTime, description, image, saveBtn);
+    eventDisplay.appendChild(container);
 }
 
 function loadInitialData() {
@@ -204,10 +216,3 @@ function loadInitialData() {
             console.error(error);
         });
 }
-
-
-
-
-
-
-
