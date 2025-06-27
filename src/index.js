@@ -14,7 +14,7 @@ function handleFormSubmit(e) {
         contacts: formData.get("clientContact")
     };
 
-    fetch("http://localhost:3000/clients", {
+    fetch("https://event-management-company-website.onrender.com/clients", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -36,7 +36,7 @@ function handleFormSubmit(e) {
             pictureURL: formData.get("picture")
         };
 
-        return fetch("http://localhost:3000/events", {
+        return fetch("https://event-management-company-website.onrender.com/events", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -77,7 +77,7 @@ function titleList(client) {
     clientList.appendChild(list);
 
     list.addEventListener("click", () => {
-        fetch(`http://localhost:3000/events?clientId=${client.id}`)
+        fetch(`https://event-management-company-website.onrender.com/events?clientId=${client.id}`)
             .then(resp => resp.json())
             .then(events => {
                 const eventDisplay = document.getElementById("eventDisplay");
@@ -91,7 +91,7 @@ function titleList(client) {
     deleteBtn.addEventListener("click", (e) => {
         e.stopPropagation()
         if (confirm("Are you sure you want to delete this client and their events?")) {
-            fetch(`http://localhost:3000/clients/${client.id}`, {
+            fetch(`https://event-management-company-website.onrender.com/clients/${client.id}`, {
                 method: "DELETE"
             })
             .then(() => {
@@ -215,7 +215,7 @@ function showEditForm(event, eventDisplay) {
         saveBtn.style.backgroundColor = ""
     });
 
-        fetch(`http://localhost:3000/events/${event.id}`, {
+        fetch(`https://event-management-company-website.onrender.com/events/${event.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -240,13 +240,13 @@ function showEditForm(event, eventDisplay) {
 }
 
 function loadInitialData() {
-    fetch("http://localhost:3000/clients")
+    fetch("https://event-management-company-website.onrender.com/clients")
         .then(resp => resp.json())
         .then(clients => {
             clients.forEach(client => titleList(client));
         });
 
-    fetch("http://localhost:3000/events")
+    fetch("https://event-management-company-website.onrender.com/events")
         .then(resp => resp.json())
         .then(events => {
             events.forEach(event => eventDisplayer(event));
