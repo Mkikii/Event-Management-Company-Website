@@ -1,32 +1,85 @@
 document.addEventListener("DOMContentLoaded", main)
 
 function main(){
-    const forms = document.getElementsByTagName("form")
-        for(let form of forms){
-            form.addEventListener("submit", (submittion) => {
-                submittion.preventDefault()
-        
-                const formData = new FormData(form)
+    const clientForm = document.getElementById("clientDetailsForm")
+
+    if(clientForm){
+        clientForm.addEventListener("submit",(submission) => {
+            submission.preventDefault()
+
+            const clientsFormData = submission.target
+            const eventFormData = document.getElementById("eventDetailsForm")
+
+            newDetails(clientsFormData, eventFormData)
+        })
+    } else{
+        alert("Form Not Found")
+    }
+ 
+}        
+
+        function newDetails(clientsFormData, eventFormData){
+            
+            const clientsForm = new FormData(clientsFormData) 
+            const eventForm = new FormData(eventFormData)
                     
-                const clientsData = {
-                    name: formData.get("clientName"),
-                    location: formData.get("clientLocation"),
-                    contacts: formData.get("clientContact")
+            const clientsData = {
+                name: clientsForm.get("clientName"),
+                location: clientsForm.get("clientLocation"),
+                contacts: clientsForm.get("clientContact")
+            }
+
+            const newClientDetails = {
+                method :"POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(clientsData)
+            }
+
+
+            fetch("http://localhost:3000/clients", newClientDetails)
+            .then(resp => resp.json())
+            .then(client => {
+                titleList(client)
+
+                const eventsData ={
+                clientId: client.id ,
+                eventName: eventForm.get("eventName"),
+                eventLocation: eventForm.get("eventLocation"),
+                type: eventForm.get("eventType"),
+                description: eventForm.get ("description"),
+                date: eventForm.get ("date"),
+                startTime:  eventForm.get ("startTime"),
+                endTime:  eventForm.get ("endTime"),
+                pictureURL:  eventForm.get ("picture")
                 }
 
-                const eventData ={
-                    eventName: formData.get("eventName"),
-                    eventLocation: formData.get("eventLocation"),
-                    type: formData.get("eventType"),
-                    description: formData.get ("description"),
-                    date: formData.get ("date"),
-                    startTime:  formData.get ("startTime"),
-                    endTime:  formData.get ("endTime"),
-                    pictureURL:  formData.get ("picture")
+                const newEventData ={
+                    method :"POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(eventsData)         
                 }
+
+
+                return fetch ("http://localhost:3000/events", newEventData)
             })
-        }    
-}        
+        
+                .then(resp => resp.json())
+                .then(event => {
+                    eventDisplayer(event)
+                })
+                .catch(error => {
+                    alert("Error during form submission. Please try again.")
+                    console.log(error)
+                })
+                           
+        }
+
 
     function titleList(clients) {
         const list = document.createElement('li');
@@ -43,9 +96,29 @@ function main(){
         const clientList = document.getElementById("list")
 
         clientList.appendChild(list)
+
+        list.addEventListener("click", () => {
+            
+            fetch(`http://localhost:3000/events?clientId=${client.id}`)
+                .then(resp => resp.json())
+                .then(events => {
+                    const eventDisplay = document.getElementById("eventDisplay")
+                    eventDisplay.innerHTML = ""
+
+                    events.forEach(event => eventDisplayer(event))
+                })
+                .catch(error => {
+                    alert("Error loading client-specific events. See console.");
+                    console.error(error);
+                })    
+        })
     }
 
     function eventDisplayer(events){
+
+         const eventDisplay = document.getElementById("eventDisplay")
+        eventDisplay.innerHTML = ""
+
 
         const title = document.createElement("h3")
         title.textContent = events.eventName
@@ -84,8 +157,6 @@ function main(){
         furtherdetails.appendChild(time)
 
 
-        const eventDisplay = document.getElementById("eventDisplay")
-
         eventDisplay.appendChild(title)
         eventDisplay.appendChild(image)
         eventDisplay.appendChild(description)
@@ -105,6 +176,9 @@ function main(){
         events.forEach(event => {
             eventDisplayer(event)
         })
+    })
+    .catch(error => {
+        alert("Error loading form data.",error)
     })
 
     
