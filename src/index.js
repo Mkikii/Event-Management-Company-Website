@@ -57,6 +57,7 @@ function handleFormSubmit(e) {
 function titleList(client) {
     const list = document.createElement("li");
     list.textContent = client.name;
+
     list.style.padding = "20px 0";
     list.style.borderRadius = "5px";
     list.style.cursor = "pointer";
@@ -91,43 +92,75 @@ function eventDisplayer(event) {
     const eventDisplay = document.getElementById("eventDisplay");
     eventDisplay.innerHTML = "";
 
-    const title = document.createElement("h3");
-    title.textContent = event.eventName;
-    title.style.fontSize = "40px";
-    title.style.marginTop = "16px";
-    title.style.marginBottom = "16px";
+    const title = document.createElement("input");
+    title.value = event.eventName;
 
-    const image = document.createElement("img");
-    image.src = event.pictureURL;
-    image.alt = event.description;
-    image.style.alignSelf = "center";
+    const location = document.createElement("input");
+    location.value = event.eventLocation;
 
-    const description = document.createElement("p");
-    description.textContent = event.description;
+    const type = document.createElement("input");
+    type.value = event.type;
 
-    const furtherDetails = document.createElement("li");
+    const date = document.createElement("input");
+    date.type = "date";
+    date.value = event.date;
 
-    const location = document.createElement("p");
-    location.textContent = `Event Location: ${event.eventLocation}`;
+    const startTime = document.createElement("input");
+    startTime.type = "time";
+    startTime.value = event.startTime;
 
-    const type = document.createElement("p");
-    type.textContent = `Type: ${event.type}`;
+    const endTime = document.createElement("input");
+    endTime.type = "time";
+    endTime.value = event.endTime;
 
-    const date = document.createElement("p");
-    date.textContent = `On: ${event.date}`;
+    const description = document.createElement("input");
+    description.value = event.description;
 
-    const time = document.createElement("p");
-    time.textContent = `From: ${event.startTime} to ${event.endTime}`;
+    const image = document.createElement("input");
+    image.type = "url";
+    image.value = event.pictureURL;
 
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save Changes";
+    saveBtn.addEventListener("click", () => {
+        const updatedEvent = {
+            eventName: title.value,
+            eventLocation: location.value,
+            type: type.value,
+            date: date.value,
+            startTime: startTime.value,
+            endTime: endTime.value,
+            description: description.value,
+            pictureURL: image.value
+        };
+
+        fetch(`http://localhost:3000/events/${event.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedEvent)
+        })
+        .then(res => res.json())
+        .then(updated => {
+            alert("Event updated!");
+            eventDisplayer(updated); 
+        });
+    });
+
+    const furtherDetails = document.createElement("div")
     furtherDetails.appendChild(location);
     furtherDetails.appendChild(type);
     furtherDetails.appendChild(date);
-    furtherDetails.appendChild(time);
+    furtherDetails.appendChild(startTime);
+    furtherDetails.appendChild(endTime)
 
     eventDisplay.appendChild(title);
     eventDisplay.appendChild(image);
     eventDisplay.appendChild(description);
     eventDisplay.appendChild(furtherDetails);
+    eventDisplay.appendChild(saveBtn)
 }
 
 function loadInitialData() {
@@ -147,3 +180,27 @@ function loadInitialData() {
             console.error(error);
         });
 }
+
+
+const deleteBtn = document.createElement("button")
+    deleteBtn.addEventListener("click",() => {
+        if(confirm("Are you sure you want to delete this data?")){
+            fetch(`http://localhost:3000/clients/${clients.id}`, {
+                method: "DELETE"
+            })
+            .then(() => {
+                alert("Data deleted.")
+                const eventDisplay = document.getElementById("eventDisplay")
+                eventDisplay.innerHTML = ""
+                
+                
+            })
+            .catch( error => {
+                alert("Failed to delete data")
+                console.log(error)
+            })
+        }
+    })
+
+
+
