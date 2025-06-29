@@ -14,7 +14,7 @@ A HTML document was used to display the results and after enough testing the cod
 ### Requirements:
 - A computer
 - Internet access
-- A mordern web browser
+- A modern web browser
 
 ## How to Use.
 ### Input of Data.
