@@ -29,7 +29,7 @@ A HTML document was used to display the results and after enough testing the cod
 ### Deleting a Client's Details.
 - Deleting a client's details is done simply by clicking on the delete button on a client's name.
 
-    **NOTE: THE WEBSITE MAY TAKE SOME TIME TO SHOWCASE THE DATA. IF YOU SEE AN ALERT AT THE TOP JUST CLICK OKAY AND GIVE IT TIME.**
+    **NOTE: THE WEBSITE MAY TAKE SOME TIME TO SHOWCASE THE DATA. IF YOU SEE AN ALERT AT THE TOP JUST CLICK OKAY, ATTEMPT RELOADING OR ATTEMPT INPUT OF DATA AND GIVE IT TIME.**
 
 ## Local use
 If you would like to use my code you'll need:
