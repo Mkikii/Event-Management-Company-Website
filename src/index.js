@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function handleFormSubmit(event) {
     event.preventDefault();
+    
     const formData = new FormData(event.target);
-
     const clientData = {
         name: formData.get("clientName"),
         location: formData.get("clientLocation"),

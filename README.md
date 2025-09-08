@@ -1,8 +1,11 @@
 # CODE CHALLENGE 3
+
 ## Description
+
 This is a project made in the school's End of Phase One project.
 
-It consists of : 
+It consists of :
+
 1. A HTML file for the website structure
 2. A CSS file for styling
 3. A .json file where input and output data is contained.
@@ -11,56 +14,69 @@ It consists of :
 A HTML document was used to display the results and after enough testing the codes were working well.
 
 ## Using the Website.
+
 ### Requirements:
+
 - A computer
 - Internet access
 - A modern web browser
 
 ## How to Use.
+
 ### Input of Data.
+
 - Enter data into the input fields of the forms and click the submit button to submit the data.
 
 ### Display of Data.
+
 - Click on the list of Clients to display each of their event's data. The data input should be displayed in the display section on the right side of the screen.
 
 ### Editing of the Data.
+
 - If you would like to edit the data, select the client and click on the edit button. Once changes have been made click on save to finish.
 
 ### Deleting a Client's Details.
+
 - Deleting a client's details is done simply by clicking on the delete button on a client's name.
 
-    **NOTE: THE WEBSITE MAY TAKE SOME TIME TO SHOWCASE THE DATA. IF YOU SEE AN ALERT AT THE TOP JUST CLICK OKAY, ATTEMPT RELOADING OR ATTEMPT INPUT OF DATA AND GIVE IT TIME.**
+  **NOTE: THE WEBSITE MAY TAKE SOME TIME TO SHOWCASE THE DATA. IF YOU SEE AN ALERT AT THE TOP JUST CLICK OKAY, ATTEMPT RELOADING OR ATTEMPT INPUT OF DATA AND GIVE IT TIME.**
 
 ## Local use
+
 If you would like to use my code you'll need:
+
 - Understanding of using the terminal and Firm understanding of HTML, CSS, and JavaScript.
 - An Integrated Development Environment, IDE(Preferably VS Code)
 
 ### Installation Process
+
 1. Clone the repository using:
-```git@github.com:JesseJames-Git/Event-Management-Company-Website.git ```
-in a folder of choice
+   `git@github.com:JesseJames-Git/Event-Management-Company-Website.git `
+   in a folder of choice
 
 2. Navigate to the directory using:
-``` cd Event-Management-Company-Website```
+   ` cd Event-Management-Company-Website`
 
 3. Open it in VS Code using this command:
-```code .```
+   `code .`
 
 4. To showcase your data your have to run this code for the requests to be made to the local server:
-``` json-server db.json ``` 
+   `json-server db.json`
 
 5. Feel free to see how the code works. Ensure you use live server to check on progress and change.
 
 ## Contact details
+
 If you have any questions contact me through:
 
 - Email: jessejamesjj007@gmail.com
 
 ## Author
+
 The entire project was done by Jesse James Kang'ethe Macibi.
 
 ## License
+
 MIT License
 
 Copyright (c) 2025 JesseJames-Git
